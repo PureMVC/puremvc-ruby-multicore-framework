@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = 'puremvc'
-  spec.version       = '1.0.1'
+  spec.version       = '1.0.2'
   spec.summary       = 'PureMVC Multicore Framework'
   spec.description   = 'PureMVC is a lightweight framework for Model-View-Controller app development.'
   spec.authors       = ['Saad Shams']
