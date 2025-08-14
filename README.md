@@ -30,7 +30,7 @@ bundle exec rubocop
 
 ### Generate RBS Signatures
 ```shell
-rbs prototype rb lib/**/*.rb --out-dir=sig
+rbs prototype rb src/**/*.rb --out-dir=sig
 ```
 
 ### Run Type Checking
@@ -46,7 +46,7 @@ RubyMine: Test file name mask: **/{*_test,test_*,*_spec}.rb
 
 ### Generate Documentation
 ```shell
-yard doc lib/**/*.rb --protected --private
+yard doc src/**/*.rb --protected --private
 open doc/index.html
 ```
 

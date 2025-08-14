@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/puremvc/puremvc-ruby-multicore-framework'
   spec.license       = 'BSD-3-Clause'
 
-  spec.files         = Dir.glob('lib/**/*.rb') + %w[README.md LICENSE CHANGELOG.md] + Dir.glob('sig/**/*.rbs')
-  spec.require_paths = ['lib']
+  spec.files         = Dir.glob('src/**/*.rb') + %w[README.md LICENSE CHANGELOG.md] + Dir.glob('sig/**/*.rbs')
+  spec.require_paths = ['src']
   spec.metadata = {
     'steep_types' => 'sig',
     'github_repo' => 'https://github.com/puremvc/puremvc-ruby-multicore-framework',

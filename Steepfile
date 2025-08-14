@@ -2,6 +2,6 @@
 
 target :app do
   signature 'sig'
-  check 'lib'
+  check 'src'
   ignore 'test'
 end
