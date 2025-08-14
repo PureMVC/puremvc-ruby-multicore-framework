@@ -51,8 +51,17 @@ open doc/index.html
 ```
 
 #### Publish
+##### 1. Setup RubyGems API Key
 ```shell
-gem signin
+mkdir -p ~/.gem
+cat > ~/.gem/credentials <<EOF
+---
+:rubygems_api_key: API_KEY
+EOF
+chmod 0600 ~/.gem/credentials
+```
+##### 2. Build the gem
+```shell
 gem build puremvc.gemspec
 gem push puremvc-1.0.0.gem
 ```
