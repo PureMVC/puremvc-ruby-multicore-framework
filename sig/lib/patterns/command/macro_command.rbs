@@ -1,0 +1,18 @@
+module PureMVC
+
+  class MacroCommand < Notifier
+
+    include _ICommand
+
+    @sub_commands: Array[^() -> _ICommand]
+
+    def initialize: () -> void
+
+    def initialize_macro_command: () -> void
+
+    def add_sub_command: () { () -> _ICommand } -> void
+  end
+
+  # Type-level assertion that MacroCommand conforms to _ICommand
+  type macro_command_validation = validate_command[MacroCommand]
+end

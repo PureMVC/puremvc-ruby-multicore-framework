@@ -1,0 +1,18 @@
+module PureMVC
+
+  class Notification
+
+    include _INotification
+
+    attr_reader name: String
+
+    attr_accessor body: Object?
+
+    attr_accessor type: String?
+
+    def initialize: (String name, ?Object? body, ?String? type) -> void
+  end
+
+  # Type-level assertion that Notification conforms to _INotification
+  type notification_validation = validate_notification[Notification]
+end

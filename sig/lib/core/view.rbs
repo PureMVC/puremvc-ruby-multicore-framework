@@ -1,0 +1,42 @@
+module PureMVC
+
+  class View
+
+    include _IView
+
+    MULTITON_MSG: String
+
+    self.@instance_map: Hash[String, _IView]
+
+    self.@mutex: Mutex
+
+    @multiton_key: String
+
+    @observer_map: Hash[String, Array[_IObserver]]
+
+    @observer_mutex: Mutex
+
+    @mediator_map: Hash[String, _IMediator]
+
+    @mediator_mutex: Mutex
+
+    def self.instance_map: () -> Hash[String, _IView]
+
+    private
+
+    def self.mutex: () -> Mutex
+
+    public
+
+    def self.get_instance: (String key) { (String k) -> _IView } -> _IView
+
+    def self.remove_view: (String key) -> void
+
+    def initialize: (String key) -> void
+
+    def initialize_view: () -> void
+  end
+
+  # Type-level assertion that View conforms to _IView
+  type view_validation = validate_view[View]
+end

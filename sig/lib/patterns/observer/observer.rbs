@@ -1,0 +1,20 @@
+module PureMVC
+
+  class Observer
+
+    include _IObserver
+
+    attr_accessor notify: Method?
+
+    attr_accessor context: Object?
+
+    def initialize: (?Method? notify, ?Object? context) -> void
+
+    def notify_observer: (_INotification) -> void
+
+    def compare_notify_context?: (Object) -> bool
+  end
+
+  # Type-level assertion that Observer conforms to _IObserver
+  type observer_validation = validate_observer[Observer]
+end

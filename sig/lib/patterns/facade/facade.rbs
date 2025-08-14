@@ -1,0 +1,48 @@
+module PureMVC
+
+  class Facade
+
+    include _IFacade
+
+    self.@instance_map: Hash[String, _IFacade]
+
+    self.@mutex: Mutex
+
+    @model: _IModel?
+
+    @controller: _IController?
+
+    @view: _IView?
+
+    @multiton_key: String
+
+    MULTITON_MSG: String
+
+    def self.instance_map: () -> Hash[String, _IFacade]
+
+    private
+
+    def self.mutex: () -> Mutex
+
+    public
+
+    def self.get_instance: (String key) { (String k) -> _IFacade } -> _IFacade
+
+    def self.has_core?: (String key) -> bool
+
+    def self.remove_core: (String key) -> void
+
+    def initialize: (String key) -> void
+
+    def initialize_facade: () -> void
+
+    def initialize_controller: () -> void
+
+    def initialize_model: () -> void
+
+    def initialize_view: () -> void
+  end
+
+  # Type-level assertion that Facade conforms to _IFacade
+  type facade_validation = validate_facade[Facade]
+end

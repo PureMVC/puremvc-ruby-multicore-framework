@@ -1,0 +1,18 @@
+module PureMVC
+  # The interface definition for a PureMVC Command.
+  #
+  # @see INotification
+  interface _ICommand
+
+    include _INotifier
+
+    # Execute the <code>_ICommand</code>'s logic to handle a given <code>_INotification</code>.
+    #
+    # @abstract This method must be implemented by the concrete command.
+    # @param notification [_INotification] an _INotification to handle.
+    def execute: (_INotification notification) -> void
+  end
+
+  # Assert that the given `Command` type parameter is a subtype of `_ICommand`
+  type validate_command[Command < _ICommand] = top
+end

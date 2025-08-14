@@ -1,0 +1,60 @@
+module PureMVC
+  #
+  # The interface definition for a PureMVC <code>_IMediator</code>.
+  #
+  # In PureMVC, <code>_IMediator</code> implementors assume these responsibilities:
+  #
+  # * Implement a common method that returns a list of all <code>_INotification</code>s
+  #   the <code>_IMediator</code> has interest in.
+  # * Implement a notification callback method.
+  # * Implement methods that are called when the <code>_IMediator</code> is registered or removed from the <code>View</code>.
+  #
+  # Additionally, <code>_IMediator</code>s typically:
+  #
+  # * Act as an intermediary between one or more view components such as text boxes or list controls,
+  #   maintaining references and coordinating their behavior.
+  # * In Flash-based apps, this is often the place where event listeners are
+  #   added to view components, and their handlers implemented.
+  # * Respond to and generate <code>_INotifications</code>, interacting with the rest of the PureMVC app.
+  #
+  # When an <code>_IMediator</code> is registered with the <code>_IView</code>,
+  # the <code>_IView</code> will call the <code>_IMediator</code>'s <code>list_notification_interests</code> method.
+  # The <code>_IMediator</code> will return an <code>Array</code> of <code>_INotification</code> names
+  # which it wishes to be notified about.
+  #
+  # The <code>_IView</code> will then create an <code>Observer</code> object
+  # encapsulating that <code>IMediator</code>'s <code>handle_notification</code> method
+  # and register it as an Observer for each <code>_INotification</code> name returned by <code>list_notification_interests</code>.
+  #
+  # @see INotification
+  interface _IMediator
+
+    include _INotifier
+
+    # @return [String] The name of the Mediator.
+    def name: () -> String
+
+    # @return [Object, nil] The view component associated with this Mediator.
+    def view: () -> Object?
+    def view=: (Object?) -> void
+
+    # List <code>_INotification</code> interests.
+    #
+    # @return [Array] an <code>Array</code> of the <code>_INotification</code> names this <code>_IMediator</code> has an interest in.
+    def list_notification_interests: () -> Array[String]
+
+    # Handle an <code>INotification</code>.
+    #
+    # @param notification [_INotification] the <code>_INotification</code> to be handled
+    def handle_notification: (_INotification notification) -> void
+
+    # Called by the View when the Mediator is registered.
+    def on_register: () -> void
+
+    # Called by the View when the Mediator is registered.
+    def on_remove: () -> void
+  end
+
+  # Assert that the given `Mediator` type parameter is a subtype of `_IMediator`
+  type validate_mediator[Mediator < _IMediator] = top
+end

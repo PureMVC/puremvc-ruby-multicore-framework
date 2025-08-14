@@ -1,0 +1,11 @@
+module PureMVC
+
+  class SimpleCommand < Notifier
+
+    include _ICommand
+
+  end
+
+  # Type-level assertion that SimpleCommand conforms to _ICommand
+  type simple_command_validation = validate_command[SimpleCommand]
+end

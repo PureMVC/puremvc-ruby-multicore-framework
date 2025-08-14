@@ -1,0 +1,40 @@
+module PureMVC
+
+  class Controller
+
+    include _IController
+
+    MULTITON_MSG: String
+
+    self.@instance_map: Hash[String, _IController]
+
+    self.@mutex: Mutex
+
+    @multiton_key: String
+
+    @view: _IView?
+
+    @command_map: Hash[String, ^() -> _ICommand]
+
+    @command_mutex: Mutex
+
+    def self.instance_map: () -> Hash[String, _IController]
+
+    private
+
+    def self.mutex: () -> Mutex
+
+    public
+
+    def self.get_instance: (String key) { (String k) -> _IController } -> _IController
+
+    def self.remove_controller: (String key) -> void
+
+    def initialize: (String key) -> void
+
+    def initialize_controller: () -> void
+  end
+
+  # Type-level assertion that Controller conforms to _IController
+  type controller_validation = validate_controller[Controller]
+end

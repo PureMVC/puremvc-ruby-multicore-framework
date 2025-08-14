@@ -1,0 +1,36 @@
+module PureMVC
+  # The interface definition for a PureMVC Proxy.
+  #
+  # In PureMVC, <code>_IProxy</code> implementors assume these responsibilities:
+  # - Implement a common method which returns the name of the Proxy.
+  # - Provide methods for setting and getting the data object.
+  #
+  # Additionally, <code>_IProxy</code>s typically:
+  # - Maintain references to one or more pieces of model data.
+  # - Provide methods for manipulating that data.
+  # - Generate <code>_INotifications</code> when their model data changes.
+  # - Expose their name called <code>NAME</code>, if they are not instantiated multiple times.
+  # - Encapsulate interaction with local or remote services used to fetch and persist model data.
+  #
+  # @see INotifier
+  interface _IProxy
+
+    include _INotifier
+
+    # @return [String] The proxy name
+    def name: () -> String
+
+    # @return [Object | nil] The data managed by the proxy
+    def data: () -> Object?
+    def data=: (Object?) -> void
+
+    # Called by the Model when the Proxy is registered
+    def on_register: () -> void
+
+    # Called by the Model when the Proxy is removed
+    def on_remove: () -> void
+  end
+
+  # Assert that the given `Proxy` type parameter is a subtype of `_IProxy`
+  type validate_proxy[Proxy < _IProxy] = top
+end

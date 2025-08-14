@@ -1,0 +1,17 @@
+module PureMVC
+
+  class Notifier
+
+    include _INotifier
+
+    @multiton_key: String
+
+    MULTITON_MSG: String
+
+    def multiton_key: () -> String
+
+  end
+
+  # Type-level assertion that Notifier conforms to _INotifier
+  type notifier_validation = validate_notifier[Notifier]
+end

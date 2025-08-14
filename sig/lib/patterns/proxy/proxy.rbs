@@ -1,0 +1,19 @@
+module PureMVC
+
+  class Proxy < Notifier
+
+    include _IProxy
+
+    NAME: String
+
+    attr_reader name: String
+
+    attr_accessor data: Object?
+
+    def initialize: (?String? name, ?Object? data) -> void
+  end
+
+  # Type-level assertion that Proxy conforms to _IProxy
+  type proxy_validation = validate_proxy[Proxy]
+end
+

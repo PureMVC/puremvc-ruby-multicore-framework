@@ -1,0 +1,38 @@
+module PureMVC
+
+  class Model
+
+    include _IModel
+
+    MULTITON_MSG: String
+
+    self.@instance_map: Hash[String, _IModel]
+
+    self.@mutex: Mutex
+
+    @multiton_key: String
+
+    @proxy_map: Hash[String, _IProxy]
+
+    @proxy_mutex: Mutex
+
+    def self.instance_map: () -> Hash[String, _IModel]
+
+    private
+
+    def self.mutex: () -> Mutex
+
+    public
+
+    def self.get_instance: (String key) { (String k) -> _IModel } -> _IModel
+
+    def self.remove_model: (String key) -> void
+
+    def initialize: (String key) -> void
+
+    def initialize_model: () -> void
+  end
+
+  # Type-level assertion that Model conforms to _IModel
+  type model_validation = validate_model[Model]
+end
