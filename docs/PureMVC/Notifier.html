@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: PureMVC::Notifier
+  
+    &mdash; Documentation by YARD 0.9.37
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "PureMVC::Notifier";
+  relpath = '../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../_index.html">Index (N)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../PureMVC.html" title="PureMVC (module)">PureMVC</a></span></span>
+     &raquo; 
+    <span class="title">Notifier</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: PureMVC::Notifier
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">PureMVC::Notifier</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>src/patterns/observer/notifier.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>A base <code>INotifier</code> implementation.</p>
+
+<p><code>MacroCommand</code>, <code>SimpleCommand</code>, <code>Mediator</code>, and <code>Proxy</code> all need to send <code>Notification</code>s.</p>
+
+<p>The <code>INotifier</code> interface provides a common method called <code>send_notification</code> that relieves implementation code of the necessity to actually construct <code>Notification</code>s.</p>
+
+<p>The <code>Notifier</code> class, which all the above-mentioned classes extend, provides an initialized reference to the <code>Facade</code> Multiton, which is required for the convenience method for sending <code>Notification</code>s. It also eases implementation, as these classes have frequent <code>Facade</code> interactions and usually require access to it anyway.</p>
+
+<p>NOTE: In the MultiCore version of the framework, there is one caveat: notifiers cannot send notifications or reach the facade until they have a valid <code>multiton_key</code>.</p>
+
+<p>The <code>multiton_key</code> is set:</p>
+<ul><li>
+<p>on a <code>SimpleCommand</code> when it is executed by the &lt;code&gt;Controller&lt;c/ode&gt;</p>
+</li><li>
+<p>on a <code>Mediator</code> when registered with the <code>View</code></p>
+</li><li>
+<p>on a <code>Proxy</code> when registered with the <code>Model</code></p>
+</li></ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="Proxy.html" title="PureMVC::Proxy (class)">Proxy</a></span></li>
+    
+      <li><span class='object_link'><a href="Facade.html" title="PureMVC::Facade (class)">Facade</a></span></li>
+    
+      <li><span class='object_link'><a href="Mediator.html" title="PureMVC::Mediator (class)">Mediator</a></span></li>
+    
+      <li><span class='object_link'><a href="MacroCommand.html" title="PureMVC::MacroCommand (class)">MacroCommand</a></span></li>
+    
+      <li><span class='object_link'><a href="SimpleCommand.html" title="PureMVC::SimpleCommand (class)">SimpleCommand</a></span></li>
+    
+  </ul>
+
+</div><div id="subclasses">
+  <h2>Direct Known Subclasses</h2>
+  <p class="children"><span class='object_link'><a href="MacroCommand.html" title="PureMVC::MacroCommand (class)">MacroCommand</a></span>, <span class='object_link'><a href="Mediator.html" title="PureMVC::Mediator (class)">Mediator</a></span>, <span class='object_link'><a href="Proxy.html" title="PureMVC::Proxy (class)">Proxy</a></span>, <span class='object_link'><a href="SimpleCommand.html" title="PureMVC::SimpleCommand (class)">SimpleCommand</a></span></p>
+</div>
+
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="MULTITON_MSG-constant" class="">MULTITON_MSG =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>Message Constants</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>multitonKey for this Notifier not yet initialized!</span><span class='tstring_end'>&#39;</span></span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#multiton_key-instance_method" title="#multiton_key (instance method)">#<strong>multiton_key</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#facade-instance_method" title="#facade (instance method)">#<strong>facade</strong>  &#x21d2; IFacade </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return the Multiton Facade instance.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize_notifier-instance_method" title="#initialize_notifier (instance method)">#<strong>initialize_notifier</strong>(key)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Initialize this INotifier instance.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#send_notification-instance_method" title="#send_notification (instance method)">#<strong>send_notification</strong>(name, body = nil, type = nil)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Create and send an INotification.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="multiton_key-instance_method">
+  
+    #<strong>multiton_key</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+46
+47
+48</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'src/patterns/observer/notifier.rb', line 46</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_multiton_key'>multiton_key</span>
+  <span class='ivar'>@multiton_key</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="facade-instance_method">
+  
+    #<strong>facade</strong>  &#x21d2; <tt>IFacade</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return the Multiton Facade instance</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>IFacade</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the facade instance for the notifier’s key</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>RuntimeError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if the <code>multiton_key</code> is not set</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+81
+82
+83
+84
+85</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'src/patterns/observer/notifier.rb', line 81</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_facade'>facade</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="#MULTITON_MSG-constant" title="PureMVC::Notifier::MULTITON_MSG (constant)">MULTITON_MSG</a></span></span> <span class='kw'>if</span> <span class='ivar'>@multiton_key</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+
+  <span class='const'><span class='object_link'><a href="Facade.html" title="PureMVC::Facade (class)">Facade</a></span></span><span class='period'>.</span><span class='id identifier rubyid_get_instance'><span class='object_link'><a href="Facade.html#get_instance-class_method" title="PureMVC::Facade.get_instance (method)">get_instance</a></span></span><span class='lparen'>(</span><span class='ivar'>@multiton_key</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_key'>key</span><span class='op'>|</span> <span class='const'><span class='object_link'><a href="Facade.html" title="PureMVC::Facade (class)">Facade</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Facade.html#initialize-instance_method" title="PureMVC::Facade#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="initialize_notifier-instance_method">
+  
+    #<strong>initialize_notifier</strong>(key)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Initialize this INotifier instance.</p>
+
+<p>This is how a Notifier receives its <code>multiton_key</code>. Any calls to <code>send_notification</code> or attempts to access the <code>facade</code> will fail until this method has been called.</p>
+
+<p>Subclasses such as <code>Mediator</code>, <code>Command</code>, or <code>Proxy</code> may override this method if they need to send notifications or access the <code>Facade</code> instance as early as possible. However, note that the <code>Facade</code> cannot be accessed within the constructor of these classes, because <code>initialize_notifier</code> will not yet have been called at that point.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>key</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the <code>multiton_key</code> this <code>INotifier</code> will use</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+61
+62
+63</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'src/patterns/observer/notifier.rb', line 61</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize_notifier'>initialize_notifier</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+  <span class='ivar'>@multiton_key</span> <span class='op'>=</span> <span class='id identifier rubyid_key'>key</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="send_notification-instance_method">
+  
+    #<strong>send_notification</strong>(name, body = nil, type = nil)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Create and send an INotification.</p>
+
+<p>This method eliminates the need to manually construct INotification instances in your implementation code.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the name of the notification</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>body</span>
+      
+      
+        <span class='type'>(<tt>Object</tt>, <tt>nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>optional body</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>type</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>optional type</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+73
+74
+75</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'src/patterns/observer/notifier.rb', line 73</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_send_notification'>send_notification</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_body'>body</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_type'>type</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_facade'>facade</span><span class='period'>.</span><span class='id identifier rubyid_send_notification'>send_notification</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_body'>body</span><span class='comma'>,</span> <span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Fri Aug 15 14:01:14 2025 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.37 (ruby-3.2.2).
+</div>
+
+    </div>
+  </body>
+</html>
