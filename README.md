@@ -3,7 +3,7 @@
 PureMVC is a lightweight framework for creating applications based upon the classic [Model-View-Controller](http://en.wikipedia.org/wiki/Model-view-controller) design meta-pattern. It supports [modular programming](http://en.wikipedia.org/wiki/Modular_programming) through the use of [Multiton](http://en.wikipedia.org/wiki/Multiton) Core actors instead of the [Singletons](http://en.wikipedia.org/wiki/Singleton_pattern) used in the [Standard](https://github.com/PureMVC/puremvc-ruby-standard-framework/wiki) Version.
 
 * [Ruby Gem](https://rubygems.org/gems/puremvc)
-* [API Docs](http://puremvc.org/pages/docs/Ruby/multicore/)
+* [API Docs](https://puremvc.org/puremvc-ruby-multicore-framework/)
 
 ## Installation
 ```shell
