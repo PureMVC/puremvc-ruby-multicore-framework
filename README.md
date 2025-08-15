@@ -46,12 +46,12 @@ RubyMine: Test file name mask: **/{*_test,test_*,*_spec}.rb
 
 ### Generate Documentation
 ```shell
-yard doc src/**/*.rb --protected --private
-open doc/index.html
+yard doc src/**/*.rb --output-dir docs --protected --private
+open docs/index.html
 ```
 
-#### Publish
-##### 1. Setup RubyGems API Key
+### Publish
+#### 1. Setup RubyGems API Key
 ```shell
 mkdir -p ~/.gem
 cat > ~/.gem/credentials <<EOF
@@ -60,7 +60,7 @@ cat > ~/.gem/credentials <<EOF
 EOF
 chmod 0600 ~/.gem/credentials
 ```
-##### 2. Build the gem
+#### 2. Build the gem
 ```shell
 gem build puremvc.gemspec
 gem push puremvc-1.0.0.gem
