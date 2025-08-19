@@ -1,4 +1,4 @@
-## [PureMVC](http://puremvc.github.com/) Ruby MultiCore Framework [![Ruby](https://github.com/PureMVC/puremvc-ruby-multicore-framework/actions/workflows/ruby.yml/badge.svg)](https://github.com/PureMVC/puremvc-ruby-multicore-framework/actions/workflows/ruby.yml)
+## [PureMVC](https://puremvc.org) Ruby MultiCore Framework [![Ruby](https://github.com/PureMVC/puremvc-ruby-multicore-framework/actions/workflows/ruby.yml/badge.svg)](https://github.com/PureMVC/puremvc-ruby-multicore-framework/actions/workflows/ruby.yml)
 
 PureMVC is a lightweight framework for creating applications based upon the classic [Model-View-Controller](http://en.wikipedia.org/wiki/Model-view-controller) design meta-pattern. It supports [modular programming](http://en.wikipedia.org/wiki/Modular_programming) through the use of [Multiton](http://en.wikipedia.org/wiki/Multiton) Core actors instead of the [Singletons](http://en.wikipedia.org/wiki/Singleton_pattern) used in the [Standard](https://github.com/PureMVC/puremvc-ruby-standard-framework/wiki) Version.
 
@@ -15,7 +15,6 @@ gem install puremvc
 * [Command-line interface](https://en.wikipedia.org/wiki/Command-line_interface)
 * [Cross-platform software](https://en.wikipedia.org/wiki/Cross-platform_software)
 
----
 ## Development
 
 ### Install Dependencies
